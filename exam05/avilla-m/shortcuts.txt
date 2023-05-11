@@ -1,0 +1,36 @@
+stuff to facilitate writing the exam 05
+
+
+1. to do before opening vim
+    cat > ~/.myvimrc
+    set nu          // add numerotation of lines
+    set mouse=a     // add mouse control and selection
+    syntax on       // add colors
+// check on the internet if you find other shortcuts helpful
+
+2. vim reminders and shortcuts
+    // basics 
+    :i  // insertion mode
+    :w  // save 
+    :q  // quit
+    :!  // force
+    :set nu // apply commands to single files
+
+    dd  // delete a line
+    yy  // copy line
+    y   // copy word
+    p   // paste
+    u   // undo
+
+    // Word substitution:
+    :%s/<old>/<new>	    // one at a time
+    :%s/<old>/<new>/g   // all at same time
+
+3. compilation and testing
+    cat > main.cpp                      // add includes #include "Warlock.hpp" etc, then copy paste main code from subject, CTRL+C to stop cat process
+    cat > output.txt                    // copy paste expected output from subject, , CTRL+C to stop cat process
+    // compile with fsanitize to make sure there is no leaks
+    clang++ -fsanitize=address -Wall -Wextra -Werror -std=c++98 *.cpp -o start
+    ./start | cat -e > myoutput.txt     // put your program output to a specific file
+    diff output.txt myoutput.txt        // test your output against the expected output
+

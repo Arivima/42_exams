@@ -1,0 +1,12 @@
+- copy main into mini_serv.c, substitute words
+- add control arguments
+
+
+
+
+
+vim
+substitution
+multiselect line
+vim comment
+move line

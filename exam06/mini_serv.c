@@ -1,13 +1,12 @@
-// #include <errno.h>
 #include <stdio.h>     // DEBUG
 #include <stdlib.h>     // exit
 #include <string.h>     // strlen
 #include <unistd.h>     // write, NULL, close, exit
-// #include <netdb.h>
 #include <netinet/in.h> // sockaddr_in
 #include <sys/select.h> // select
 #include <sys/types.h>  // size_t
 #include <sys/socket.h> // sockaddr, socklen_t, socket, bind, listen, accept, recv, send
+#include <fcntl.h>      // fcntl
 
 // structures
 typedef struct  s_cli {
@@ -31,10 +30,8 @@ int     add_cli(int fd);
 int     rmv_cli(int fd);
 void     send_to_others(char *line, int fd);
 
-
 void    ft_err()
 {
-    printf("ft_err()\n");
     for (t_cli *tmp = cli; tmp != NULL; tmp = tmp->next)
         rmv_cli(tmp->fd);
     if (sfd > 0)
@@ -44,7 +41,7 @@ void    ft_err()
 }
 
 void    print_cli(const char * title){
-    printf("| print_cli() | %s\n", title);
+    printf("| print_cli() | %s | max_fd %d\n", title, max_fd);
     for (t_cli *tmp = cli; tmp != NULL; tmp = tmp->next){
         printf("| client | id : %d | fd : %d | next %p\n", tmp->id, tmp->fd, tmp->next);
     }
@@ -54,7 +51,6 @@ void    print_cli(const char * title){
 
 int    add_cli(int fd)
 {
-    printf("add_cli()\n");
     // record last node ptr and id
     int id = 0;
     t_cli * last = NULL;
@@ -80,12 +76,12 @@ int    add_cli(int fd)
         last->next = new_cli;
     // add fd to fd_set
     FD_SET(new_cli->fd, &afds);
-    print_cli("after adding");
+    printf("| new client %d | fd : %d \n", new_cli->id, new_cli->fd);
+    // print_cli("new client");
     return (new_cli->id);
 }
 
 int rmv_cli(int fd){
-    printf("rmv_cli()\n");
     // remove client
     int     id = 0;
     t_cli * last = NULL;
@@ -104,33 +100,31 @@ int rmv_cli(int fd){
         }
         last = tmp;
     }
-    print_cli("after removing");
     // reset max_fd
     max_fd = 0;
     for (t_cli *tmp = cli; tmp != NULL; tmp = tmp->next){
         if (max_fd < tmp->fd)
             max_fd = tmp->fd;
     }
-    printf("resetting max_fd : %d\n", max_fd);
     return (id);
 }
 
 void send_to_others(char *line, int fd)
 {
-    printf("send_to_others()\n");
     for (t_cli *tmp = cli; tmp != NULL; tmp = tmp->next){
         if (FD_ISSET(tmp->fd, &wfds))
         {
             if (tmp->fd != fd){
-            printf("| send to cli | id : %d | fd : %d | msg: %s |\n", tmp->id, tmp->fd, line);
-            if (send(tmp->fd, line, strlen(line), 0) < 0)
-                ft_err();
+            printf("| sending to cli %d | fd : %d | msg:%s", tmp->id, tmp->fd, line);
+            if (line[strlen(line) - 1] != '\n')
+                printf("\n");
+            if (send(tmp->fd, line, strlen(line), 0) < 0){
+                printf("error send\n");
+                ft_err();                
             }
-            else
-                printf("| client will not send to itself | id : %d | fd : %d |\n", tmp->id, tmp->fd);
+
+            }
         }
-        else
-            printf("| cli not ready for writing | id : %d | fd : %d |\n", tmp->id, tmp->fd);
     }
     bzero(buf, buf_size);
 }
@@ -145,10 +139,20 @@ int main(int ac, char **av) {
         exit(1);
     }
 	// socket create and verification 
-	//! sfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0); 
-	sfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0); 
+	sfd = socket(AF_INET, SOCK_STREAM, 0); 
 	if (sfd == -1)
         ft_err();
+    int optval = 1;
+    if (setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)) == -1) {
+        perror("setsockopt failed");
+        close(sfd);
+        return -1;
+    }
+    if (fcntl(sfd, F_SETFL, O_NONBLOCK) == -1) {
+        perror("Failed to set non-blocking mode");
+        close(sfd);
+        return -1;
+    }
 	// assign IP, PORT 
 	addr_size = sizeof(cli_addr);
     bzero(&serv_addr, addr_size); 
@@ -171,63 +175,65 @@ int main(int ac, char **av) {
     // server loop
     while (1){
         rfds = wfds = afds;
-        printf("Server waiting...\n");
         int ready = select(max_fd + 1, &rfds, &wfds, NULL, NULL);
-        printf("ready : %d\n", ready);
         if (ready < 0)
             ft_err();
         else if (ready == 0){
-            printf("Passed select(): No fd ready\n");
             continue;            
         }
 
         else {
+            // new connection
             if (FD_ISSET(sfd, &rfds)){
-                printf("Accepting new connection\n");
-                // new connection
                 int cfd = accept(sfd, (struct sockaddr *)&cli_addr, &addr_size);
                 if (cfd < 0)
                     ft_err();
                 sprintf(buf, "server: client %d just arrived\n", add_cli(cfd));
-                printf("buffer : %s\n", buf);
                 send_to_others(buf, cfd);
             }
-            for (t_cli *tmp = cli; tmp != NULL; tmp = tmp->next){
-                if (FD_ISSET(tmp->fd, &rfds)){
-                    printf("Receiving a request | cli_id : %d | fd : %d |\n", tmp->id, tmp->fd);
-                    // receive request
-                    ssize_t bytes_recv = recv(tmp->fd, &buf, buf_size, 0);
-                    if (bytes_recv == -1)
-                        ft_err(); //! exit ? && if not buf
-                    else if (bytes_recv == 0)
-                    {
-                        printf("Removing inactive connection | cli_id : %d | fd : %d |\n", tmp->id, tmp->fd);
-                        // removing inactive connection
-                        sprintf(buf, "server: client %d just left\n", rmv_cli(tmp->fd));
-                        printf("buffer : %s\n", buf);
-                        send_to_others(buf, tmp->fd);
-                    }
-                    else {
-                        printf("Respond to request | cli_id : %d | fd : %d\n| req : %s\n", tmp->id, tmp->fd, buf);
+            // receive request
+            else
+            {
+                for (t_cli *tmp = cli; tmp != NULL; tmp = tmp->next){
+                    if (FD_ISSET(tmp->fd, &rfds)){
+                        ssize_t bytes_recv = recv(tmp->fd, &buf, buf_size, 0);
+                        if (bytes_recv == -1)
+                            ft_err(); //! exit ? && if not buf
+                        else if (bytes_recv == 0)
+                        {
+                            printf("Removing inactive connection | cli_id : %d | fd : %d |\n", tmp->id, tmp->fd);
+                            // removing inactive connection
+                            sprintf(buf, "server: client %d just left\n", rmv_cli(tmp->fd));
+                            send_to_others(buf, tmp->fd);
+                        }
                         // respond to request
-                        int nb_newline = 0;
-                        for (int i = 0; buf[i] != 0; i++){
-                            if (buf[i] == '\n')
-                                nb_newline++;
+                        else {
+                            printf("Respond to request | cli_id : %d | fd : %d\n| req : %s\n", tmp->id, tmp->fd, buf);
+                            int nb_newline = 0;
+                            for (int i = 0; buf[i] != 0; i++){
+                                if (buf[i] == '\n')
+                                    nb_newline++;
+                            }
+                            printf("nb_newline: %d\n", nb_newline);
+                            int     resp_buf_size = buf_size + ((nb_newline + 1) * strlen("client  : "));//!%d 
+                            printf("buf_size: %d\n", buf_size);
+                            printf("resp_buf_size: %d\n", resp_buf_size);
+                            char    send_buf[resp_buf_size];
+                            bzero(send_buf, resp_buf_size);
+                            sprintf(send_buf, "client %d: ", tmp->id);
+                            printf("%s", send_buf);
+                            for (int i = 0; buf[i] != 0; i++){
+                                sprintf(send_buf, "%c", buf[i]);
+                                printf("%s", send_buf);
+                                if (buf[i] == '\n' && buf[i + 1] != 0)
+                                {
+                                    sprintf(send_buf, "client %d: ", tmp->id);
+                                    printf("%s", send_buf);
+                                }
+                            }
+                            printf("\nbuffer : %s\n", send_buf);
+                            send_to_others(send_buf, tmp->fd);
                         }
-                        printf("nb_newline: %d\n", nb_newline);
-                        int     resp_buf_size = buf_size + (nb_newline * strlen("client %d: "));
-                        printf("resp_buf_size: %d\n", resp_buf_size);
-                        char    send_buf[resp_buf_size];
-                        bzero(send_buf, resp_buf_size);
-                        sprintf(send_buf, "client %d: ", tmp->id);
-                        for (int i = 0; buf[i] != 0; i++){
-                            sprintf(send_buf, "%c", buf[i]);
-                            if (buf[i] == '\n' && buf[i + 1] != 0)
-                                sprintf(send_buf, "client %d: ", tmp->id);
-                        }
-                        printf("buffer : %s\n", send_buf);
-                        send_to_others(send_buf, tmp->fd);
                     }
                 }
             }

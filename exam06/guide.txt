@@ -10,3 +10,6 @@ substitution
 multiselect line
 vim comment
 move line
+
+clear && g++ -Wall -Wextra -Werror mini_serv.c -o mini_serv && ./mini_serv 8080
+clear && g++ -Wall -Wextra -Werror mini_cli.c -o mini_cli && ./mini_cli 8080

@@ -118,6 +118,7 @@ void    ft_exit()
     for (int i = 0 ; i < NB_CLI ; i++){
         if (clients[i].id != -1)
             kill_client(i);
+        sleep(1);
     }
     exit(1);    
 }
@@ -264,7 +265,7 @@ int get_user_input()
     }
     printf(RESET "\n"); 
     message[strlen(message) - 1] = '\0';
-    if (!message){
+    if (!message || strcmp(message, "") == 0){
         perror(RED "Empty input" RESET);
         return -1;
     }

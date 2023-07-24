@@ -13,3 +13,9 @@ move line
 
 clear && g++ -Wall -Wextra -Werror mini_serv.c -o mini_serv && ./mini_serv 8080
 clear && g++ -Wall -Wextra -Werror mini_cli.c -o mini_cli && ./mini_cli 8080
+
+leaks check : 
+clear && gcc -g -Wall -Wextra -Werror mini_serv.c -o mini_serv && valgrind ./mini_serv 8080
+clear && gcc -g -Wall -Wextra -Werror mini_serv.c -o mini_serv && valgrind --show-leak-kinds=all --leak-check=full ./mini_serv 8080
+
+telnet 127.0.0.1 8080

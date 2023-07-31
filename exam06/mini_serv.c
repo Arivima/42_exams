@@ -114,10 +114,12 @@ int main(int ac, char **av) {
         write(2,"Wrong number of arguments\n", strlen("Wrong number of arguments\n"));
         exit(1);
     }
-	sfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0); 
+	
+    sfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0); 
 	if (sfd == -1)
         ft_err("socket");
-	addr_size = sizeof(cli_addr);
+	
+    addr_size = sizeof(cli_addr);
     bzero(&serv_addr, addr_size); 
 	serv_addr.sin_family = AF_INET; 
 	serv_addr.sin_port = htons(atoi(av[1])); 
@@ -126,9 +128,11 @@ int main(int ac, char **av) {
         ft_err("bind");
 	if (listen(sfd, 10) != 0)
         ft_err("listen");
+    
     FD_ZERO(&afds);
     FD_SET(sfd, &afds);
     max_fd = sfd;
+    
     while (1){
         rfds = wfds = afds;
         int ready = select(max_fd + 1, &rfds, &wfds, NULL, NULL);

@@ -1,6 +1,6 @@
 # 42_exams
 ## Contents of this github
-| exam   | exercise | subject | rendu | tester | tips | references |  
+| exam #  | exercise | subject | rendu | tester | tips | references |  
 | :- | :- | :-: | :-: | :-: | :-: | :-: |   
 | exam02 | printf | :green_circle: | :green_circle: | :green_circle: | - | - |
 | exam02 | gnl | :green_circle: | :green_circle: | :green_circle: | - | - |
@@ -54,13 +54,13 @@ Other useful configuration options : https://dougblack.io/words/a-good-vimrc.htm
 ####    Word substitution:
     :%s/<old>/<new>	    // one at a time
     :%s/<old>/<new>/g   // all at same time
-    :%s/<old>/<new>/gc      // replace all old with new throughout file with confirmations
+    :%s/<old>/<new>/gc  // replace all old with new throughout file with confirmations
 
-###     Vim cheatsheet
+####     Vim cheatsheet : additional shortcuts
 https://devhints.io/vim  
 https://vim.rtorr.com/
 
-### 3. compilation, leaks and testing
+### 3. Compilation, leaks and testing
 
 Checking leaks with Address Sanitizer  
 https://github.com/google/sanitizers/wiki/AddressSanitizer

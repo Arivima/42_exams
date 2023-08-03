@@ -1,6 +1,6 @@
 # 42_exams
 ## Contents of this github
-| exam   | exercise | subject | rendu | tester | tips | list of references |  
+| exam   | exercise | subject | rendu | tester | tips | references |  
 | :- | :- | :-: | :-: | :-: | :-: | :-: |   
 | exam02 | printf | :green_circle: | :green_circle: | :green_circle: | - | - |
 | exam02 | gnl | :green_circle: | :green_circle: | :green_circle: | - | - |

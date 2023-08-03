@@ -16,11 +16,11 @@
 ## Tips for approaching exams
 1. Read the subject & write your own code from scratch, without studying other students' code.
 2. Make it work  
-    if you need to look at someone else code / if there are still "minor" mistakes <i>(that you consider stupid/minor but in all honnesty cannot correct without external help)</i> => there are still things you need to learn/understand.
+    If you need to look at someone else code / if there are still "minor" mistakes <i>(that you consider stupid/minor but in all honnesty cannot correct without external help)</i> => there are still things you need to learn/understand.
 3. Read peer code to (1) learn from them and (2) optimize your code for exam conditions (shorter, more efficient etc.).  
     => This is an exam, the code doesn't need to be bullet proof or best practice, it needs to work and be short so you are able to write and debug in 2 hours  
 4. Write your own tester
-5. Practice in exam conditions (vim + term, silence, max 2/3h) once before the exam  
+5. Practice in exam conditions (vim + term, silence, max 2h) once before the exam  
 
 ## Tips to write exams more efficiently
 Vim documentation : https://vimdoc.sourceforge.net/  

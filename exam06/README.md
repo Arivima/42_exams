@@ -1,11 +1,13 @@
 # EXAM 06  
 ## Advices :
-1. Write your own code, make it work.  
-=> anything that doesn't work means that you didn't understand something that you should understand
-2. Study other students' code to learn their approach and optimize your own code.  
+1. Write your own code from scratch, without studying other students'code.
+2. Make it work  
+    if you need to look at someone else code / if there are still "minor" mistakes <i>(that you consider stupid/minor but in all honnesty cannot correct without external help)</i> => there are still things you need to learn/understand.
+3. read peer code to (1) learn from them and (2) optimize your code for exam conditions (shorter, more efficient etc.).  
     => This is an exam, the code doesn't need to be bullet proof or best practice, it needs to work and be short so you are able to write and debug in 2 hours  
-3. Write your own tester
-4. Practice in exam conditions (vim + term, silence, max 2/3h) once before the exam
+4. Write your own tester
+5. Practice in exam conditions (vim + term, silence, max 2/3h) once before the exam  
+
 5. Use the main.c given in subject folder to be the base for your mini_serv.c
 
 ## References :

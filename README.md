@@ -1,18 +1,28 @@
 # 42_exams
 ## Contents of this github
-| exam   | subject | rendu | tester | list of references |  
-| - | :-: | :-: | :-: | :-: |  
-| exam02 | :green_circle: | :green_circle: |  | :green_circle: |
-| exam03 | :green_circle: | :green_circle: |  | :green_circle: |
-| exam04 | :green_circle: | :green_circle: |  | :green_circle: |
-| exam05 | :green_circle: | :green_circle: |  | :green_circle: |
-| exam06 | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
+| exam   | exercise | subject | rendu | tester | tips | list of references |  
+| :- | :- | :-: | :-: | :-: | :-: |  
+| exam02 | printf | :green_circle: | :green_circle: | :green_circle: | - | - |
+| exam02 | gnl | :green_circle: | :green_circle: | :green_circle: | - | - |
+| exam02 | union | :green_circle: | :green_circle: | :green_circle: | - | - |
+| exam02 | inter | :green_circle: | :green_circle: | :green_circle: | - | - |
+| exam03 | micro_paint | :green_circle: | :green_circle: | - | - | :green_circle: |
+| exam03 | mini_paint | :green_circle: | - | - |  - | :green_circle: |
+| exam04 | microshell | :green_circle: | :green_circle: | - | -  | - |
+| exam05 | Warlock | :green_circle: | :green_circle: | :green_circle: | - | - |
+| exam06 | mini_serv | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
+
 
 ## Tips for approaching exams
-1. read subject and write your own code in exam conditions, from scratch, without studying other students'code.
-2. debug and make it work -> if you need to look at someone else code / if there are still "minor" mistakes (that you consider stupid/minor but cannot correct without external help), there are still things you need to learn/understand.
-3. read peer code to find ways to make your code more efficient for exam conditions (shorter, more logical etc.). This is also a good moment to learn different styles of code.
-## Tips to facilitate writing exams
+1. Write your own code from scratch, without studying other students'code.
+2. Make it work  
+    if you need to look at someone else code / if there are still "minor" mistakes <i>(that you consider stupid/minor but in all honnesty cannot correct without external help)</i> => there are still things you need to learn/understand.
+3. read peer code to (1) learn from them and (2) optimize your code for exam conditions (shorter, more efficient etc.).  
+    => This is an exam, the code doesn't need to be bullet proof or best practice, it needs to work and be short so you are able to write and debug in 2 hours  
+4. Write your own tester
+5. Practice in exam conditions (vim + term, silence, max 2/3h) once before the exam  
+
+## Tips to write exams more efficiently
 Vim documentation : https://vimdoc.sourceforge.net/  
 On term : CTRL + SHIFT + C / V to copy paste on terminal
 

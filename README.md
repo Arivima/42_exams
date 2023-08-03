@@ -54,7 +54,7 @@ Other useful configuration options : https://dougblack.io/words/a-good-vimrc.htm
     :%s/<old>/<new>/g   // all at same time
     :%s/<old>/<new>/gc      // replace all old with new throughout file with confirmations
 
-###     Cheatsheet
+###     Vim cheatsheet
 https://devhints.io/vim  
 https://vim.rtorr.com/
 

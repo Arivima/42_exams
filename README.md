@@ -1,6 +1,13 @@
 # 42_exams
-## References
-All updated subjects and testers here -> ([JCluzet](https://github.com/JCluzet/42_EXAM.git)) (+ example code and practice prog)
+## Contents of this github
+| exam   | subject | rendu | tester | references to githubs |  
+| - | - | - | - | - |  
+| exam02 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| exam03 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| exam04 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| exam05 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| exam06 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+
 ## Tips for approaching exams
 1. read subject and write your own code in exam conditions, from scratch, without studying.
 2. debug and make it work -> if you need to look at someone else code / if there are "stupid" mistakes, there are still things you need to learn/understand.
@@ -40,3 +47,5 @@ When provided with main and/or output examples
     
 Compile with -fsanitize=address to make sure there is no leaks
 
+## References
+All updated subjects and testers here -> ([JCluzet](https://github.com/JCluzet/42_EXAM.git)) (+ example code and practice prog)

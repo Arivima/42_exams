@@ -171,11 +171,7 @@ int main(int ac, char **av) {
         ft_err("listen");
     // initializing fd_sets
     FD_ZERO(&afds);
-    FD_ZERO(&rfds);
-    FD_ZERO(&wfds);
     FD_SET(sfd, &afds);
-    FD_SET(sfd, &rfds);
-    FD_SET(sfd, &wfds);
     max_fd = sfd;
     // server loop
     while (1){

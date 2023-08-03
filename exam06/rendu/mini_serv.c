@@ -76,12 +76,10 @@ int main(int ac, char **av) {
 				}
 			}
             else if (FD_ISSET(fdi, &rfds) && fdi != sfd) {
-				// bzero(&buf_recv, buf_size);
 				int r = recv(fdi, buf_recv, 65536, 0);
 				if (r <= 0){
 					sprintf(buf_send, "server: client %d just left\n", cli[fdi].id);
 					send_others(fdi);
-					// bzero(&cli[fdi], sizeof(t_cli));
 					FD_CLR(fdi, &afds);
 					close(fdi);
 					break;

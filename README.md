@@ -2,11 +2,11 @@
 ## Contents of this github
 | exam   | subject | rendu | tester | list of references |  
 | - | :-: | :-: | :-: | :-: |  
-| exam02 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
-| exam03 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
-| exam04 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
-| exam05 | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
-| exam06 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| exam02 | :green_circle: | :green_circle: |  | :green_circle: |
+| exam03 | :green_circle: | :green_circle: |  | :green_circle: |
+| exam04 | :green_circle: | :green_circle: |  | :green_circle: |
+| exam05 | :green_circle: | :green_circle: |  | :green_circle: |
+| exam06 | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
 
 ## Tips for approaching exams
 1. read subject and write your own code in exam conditions, from scratch, without studying other students'code.

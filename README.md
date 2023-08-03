@@ -34,7 +34,8 @@ On term : CTRL + SHIFT + C / V to copy paste on terminal
 
 Other useful configuration options : https://dougblack.io/words/a-good-vimrc.html
 
-### 2. Vim shortcuts essentials
+### 2. Vim shortcuts essentials  
+
 ####    Very basics 
     :i      // insertion mode
     :w      // save 
@@ -48,7 +49,8 @@ Other useful configuration options : https://dougblack.io/words/a-good-vimrc.htm
     u       // undo
     U       // restore (undo) last changed line
     Ctrl + r// redo
-    .       // repeat last command
+    .       // repeat last command  
+
 ####    Word substitution:
     :%s/<old>/<new>	    // one at a time
     :%s/<old>/<new>/g   // all at same time

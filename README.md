@@ -2,15 +2,15 @@
 ## Contents of this github
 | exam #  | exercise | subject | rendu | tester | tips | references |  
 | :- | :- | :-: | :-: | :-: | :-: | :-: |   
-| exam02 | printf | :green_circle: | :green_circle: | :green_circle: | - | - |
-| exam02 | gnl | :green_circle: | :green_circle: | :green_circle: | - | - |
-| exam02 | union | :green_circle: | :green_circle: | :green_circle: | - | - |
-| exam02 | inter | :green_circle: | :green_circle: | :green_circle: | - | - |
-| exam03 | micro_paint | :green_circle: | :green_circle: | - | - | :green_circle: |
-| exam03 | mini_paint | :green_circle: | - | - |  - | :green_circle: |
-| exam04 | microshell | :green_circle: | :green_circle: | - | -  | - |
-| exam05 | Warlock.cpp | :green_circle: | :green_circle: | :green_circle: | :green_circle: | - |
-| exam06 | mini_serv | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
+| [exam02](https://github.com/Arivima/42_exams/tree/main/exam02) | [ft_printf](https://github.com/Arivima/42_exams/tree/main/exam02/ft_printf) | :green_circle: | :green_circle: | :green_circle: | - | - |
+| [exam02](https://github.com/Arivima/42_exams/tree/main/exam02) | [get_next_line](https://github.com/Arivima/42_exams/tree/main/exam02/gnl) | :green_circle: | :green_circle: | :green_circle: | - | - |
+| [exam02](https://github.com/Arivima/42_exams/tree/main/exam02) | [union](https://github.com/Arivima/42_exams/tree/main/exam02/union) | :green_circle: | :green_circle: | :green_circle: | - | - |
+| [exam02](https://github.com/Arivima/42_exams/tree/main/exam02) | [inter](https://github.com/Arivima/42_exams/tree/main/exam02/inter) | :green_circle: | :green_circle: | :green_circle: | - | - |
+| [exam03](https://github.com/Arivima/42_exams/tree/main/exam03) | [micro_paint](https://github.com/Arivima/42_exams/tree/main/exam03/micro_paint) | :green_circle: | :green_circle: | - | - | :green_circle: |
+| [exam03](https://github.com/Arivima/42_exams/tree/main/exam03) | [mini_paint](https://github.com/Arivima/42_exams/tree/main/exam03/mini_paint) | :green_circle: | - | - |  - | :green_circle: |
+| [exam04](https://github.com/Arivima/42_exams/tree/main/exam04) | [microshell](https://github.com/Arivima/42_exams/tree/main/exam04) | :green_circle: | :green_circle: | - | -  | - |
+| [exam05](https://github.com/Arivima/42_exams/tree/main/exam05) | [Warlock.cpp](https://github.com/Arivima/42_exams/tree/main/exam05) | :green_circle: | :green_circle: | :green_circle: | :green_circle: | - |
+| [exam06](https://github.com/Arivima/42_exams/tree/main/exam06) | [mini_serv](https://github.com/Arivima/42_exams/tree/main/exam06) | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
 
 
 ## Tips for approaching exams

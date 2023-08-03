@@ -9,7 +9,7 @@
 | exam03 | micro_paint | :green_circle: | :green_circle: | - | - | :green_circle: |
 | exam03 | mini_paint | :green_circle: | - | - |  - | :green_circle: |
 | exam04 | microshell | :green_circle: | :green_circle: | - | -  | - |
-| exam05 | Warlock | :green_circle: | :green_circle: | :green_circle: | :green_circle: | - |
+| exam05 | Warlock.cpp | :green_circle: | :green_circle: | :green_circle: | :green_circle: | - |
 | exam06 | mini_serv | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
 
 
